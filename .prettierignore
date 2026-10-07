@@ -1,0 +1,14 @@
+node_modules
+android
+ios
+core
+docs
+fixtures
+.expo
+package-lock.json
+*.md
+.claude
+scripts/design.mjs
+publish
+src/theme/tokens.ts
+src/theme/icons.ts

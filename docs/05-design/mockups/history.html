@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>History mockups</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="kit.css">
+<style>
+  .ride-row { display: grid; grid-template-columns: 150px 110px repeat(4, 1fr) 96px; align-items: center; gap: 12px; }
+  .ride-row .n { font-family: var(--font-display); font-weight: 600; font-size: 20px; font-variant-numeric: tabular-nums; }
+  .ride-row .n small { font: 500 11px var(--font-ui); color: var(--text-tertiary); margin-left: 2px; }
+  .ride-head { font: 600 10.5px var(--font-ui); letter-spacing: 1px; text-transform: uppercase; color: var(--text-tertiary); padding: 0 14px 6px; }
+</style>
+</head>
+<body class="gallery">
+<header>
+  <h1>History</h1>
+  <p>Rides and speed-test runs, viewed only in the app. Old rides are compressed automatically, so peaks survive while the file shrinks.</p>
+  <nav><a href="index.html">All screens</a><a href="dashboard.html">Dashboard</a><a href="dashboard-edit.html">Edit layout</a><a href="connect.html">Connect</a><a href="vehicle.html">Vehicle</a><a href="speed-test.html">Speed test</a><a href="history.html">History</a><a href="alerts.html">Alerts</a><a href="settings.html">Settings</a></nav>
+</header>
+
+<section class="spec">
+  <h2>Ride list <code>#rides-list</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="rides-list" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a><svg class="i"><use href="#i-timer"/></svg></a><a class="on"><svg class="i"><use href="#i-history"/></svg></a><a><svg class="i"><use href="#i-bike"/></svg></a><a><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><h1 class="t-title">History</h1><span class="segc" style="margin-left:10px"><span class="on">Rides</span><span>Speed runs</span></span><span class="spacer"></span><span class="chip"><svg class="i sm"><use href="#i-hard-drive"/></svg>412 MB of 2 GB</span></div>
+        <div class="content" style="flex-direction:column;gap:0">
+          <div class="ride-row ride-head"><span>Ride</span><span>Speed</span><span>Distance</span><span>Time</span><span>Max</span><span>Wh/km</span><span></span></div>
+          <div class="panel list">
+            <div class="lrow ride-row"><span class="stack" style="gap:0"><span style="font-weight:500">Today 13:10</span><span class="faint" style="font-size:12px">This week</span></span><svg class="spark" width="110" height="28" data-series="mini-1" data-color="accent"></svg><span class="n">14.2<small>km</small></span><span class="n">38:12</span><span class="n">52<small>km/h</small></span><span class="n">18.9</span><span class="row-flex" style="gap:4px;justify-content:flex-end"><span class="chip warn" style="height:22px;padding:0 7px"><svg class="i sm"><use href="#i-triangle-alert"/></svg>1</span><svg class="i sm faint"><use href="#i-map-pin"/></svg></span></div>
+            <div class="lrow ride-row"><span class="stack" style="gap:0"><span style="font-weight:500">Mon 22 Sep 18:31</span><span class="faint" style="font-size:12px">This week</span></span><svg class="spark" width="110" height="28" data-series="mini-2" data-color="accent"></svg><span class="n">6.8<small>km</small></span><span class="n">19:40</span><span class="n">47<small>km/h</small></span><span class="n">17.2</span><span></span></div>
+            <div class="lrow ride-row"><span class="stack" style="gap:0"><span style="font-weight:500">Sat 20 Sep 10:05</span><span class="faint" style="font-size:12px">This week</span></span><svg class="spark" width="110" height="28" data-series="mini-3" data-color="accent"></svg><span class="n">31.5<small>km</small></span><span class="n">1:24:08</span><span class="n">55<small>km/h</small></span><span class="n">20.4</span><span class="row-flex" style="gap:4px;justify-content:flex-end"><svg class="i sm faint"><use href="#i-map-pin"/></svg></span></div>
+            <div class="lrow ride-row"><span class="stack" style="gap:0"><span style="font-weight:500">Thu 11 Sep 17:48</span><span class="faint" style="font-size:12px">Compressed</span></span><svg class="spark" width="110" height="28" data-series="mini-4" data-color="secondary"></svg><span class="n">12.0<small>km</small></span><span class="n">33:51</span><span class="n">49<small>km/h</small></span><span class="n">19.1</span><span class="row-flex" style="gap:4px;justify-content:flex-end"><svg class="i sm faint"><use href="#i-archive"/></svg></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>One row per ride with a speed thumbnail. Right edge badges: alerts count (warn chip), GPS route recorded (pin), compressed (archive).</li>
+    <li>Compressed rides say so and use a neutral thumbnail colour. Their summary stays exact.</li>
+    <li>The storage chip opens Storage in Settings. It turns warn near the limit.</li>
+    <li>Swipe a row left to delete (with undo). Long press to select several.</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Ride detail <code>#ride-detail</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="ride-detail" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a><svg class="i"><use href="#i-timer"/></svg></a><a class="on"><svg class="i"><use href="#i-history"/></svg></a><a><svg class="i"><use href="#i-bike"/></svg></a><a><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><span class="icon-btn" style="width:40px;height:40px"><svg class="i"><use href="#i-chevron-left"/></svg></span><div class="stack" style="gap:0"><h1 class="t-title" style="font-size:18px">Today 13:10</h1><span class="faint" style="font-size:12px">2 controllers · GPS on</span></div><span class="spacer"></span><span class="segc"><span class="on">Speed</span><span>Power</span><span>Voltage</span><span>Temps</span></span><span class="icon-btn" style="width:40px;height:40px"><svg class="i"><use href="#i-trash-2"/></svg></span></div>
+        <div class="content" style="flex-direction:column;gap:10px">
+          <div class="row-flex" style="gap:8px">
+            <div class="panel" style="flex:1;padding:6px 12px"><span class="t-label muted">Distance</span><div class="num" style="font-size:24px">14.2 <small class="faint" style="font:500 11px var(--font-ui)">km</small></div></div>
+            <div class="panel" style="flex:1;padding:6px 12px"><span class="t-label muted">Time</span><div class="num" style="font-size:24px">38:12</div></div>
+            <div class="panel" style="flex:1;padding:6px 12px"><span class="t-label muted">Avg · max</span><div class="num" style="font-size:24px">22 · 52 <small class="faint" style="font:500 11px var(--font-ui)">km/h</small></div></div>
+            <div class="panel" style="flex:1;padding:6px 12px"><span class="t-label muted">Used</span><div class="num" style="font-size:24px">268 <small class="faint" style="font:500 11px var(--font-ui)">Wh</small></div></div>
+            <div class="panel" style="flex:1;padding:6px 12px"><span class="t-label muted">Min volt</span><div class="num c-volt" style="font-size:24px">58.1 <small class="faint" style="font:500 11px var(--font-ui)">V</small></div></div>
+            <div class="panel" style="flex:1;padding:6px 12px"><span class="t-label muted">Peak</span><div class="num c-drive" style="font-size:24px">3.1 <small class="faint" style="font:500 11px var(--font-ui)">kW</small></div></div>
+          </div>
+          <div class="panel" style="flex:1;padding:8px 10px 2px;position:relative">
+            <svg class="chart" width="800" height="222" data-series="accent:ride-speed:band" data-ymin="0" data-ymax="60" data-yticks="0,20,40,60" data-xlabels="0,5,10,15,20,25,30,35 min" data-scrub="0.62"></svg>
+            <div class="panel" style="position:absolute;left:calc(34px + (100% - 62px) * 0.62 + 18px);top:14px;padding:6px 10px;font-size:12px;background:var(--bg-raised)">
+              <div class="muted">23:41 · 8.9 km</div>
+              <div><b class="num" style="font-size:18px">41</b> km/h · <span class="c-drive">1.9 kW</span> · <span class="c-volt">60.2 V</span></div>
+            </div>
+            <span class="chip warn" style="position:absolute;left:calc(34px + (100% - 62px) * 0.81);bottom:30px;height:22px;padding:0 7px"><svg class="i sm"><use href="#i-thermometer"/></svg>88 °C</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>Chart:</b> line = value, shaded band = min/max per bucket, so short spikes stay visible at any zoom. Data comes pre-downsampled from the native side.</li>
+    <li><b>Scrub:</b> drag across the chart. The tooltip shows every main metric at that moment, not only the one on screen.</li>
+    <li>Alert events are pinned on the time axis as chips. Pinch to zoom time. X axis can switch to distance.</li>
+    <li>If GPS was on, a Route tab appears next to Temps.</li>
+  </ul>
+</section>
+
+<script src="icons.js"></script>
+<script src="kit.js"></script>
+</body>
+</html>

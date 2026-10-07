@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Speed test mockups</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="kit.css">
+</head>
+<body class="gallery">
+<header>
+  <h1>Speed test</h1>
+  <p>Arm it, stand still, go. The timer starts by itself when the wheel moves and every bracket is timed in one run. Runs are saved even when ride logging is off.</p>
+  <nav><a href="index.html">All screens</a><a href="dashboard.html">Dashboard</a><a href="dashboard-edit.html">Edit layout</a><a href="connect.html">Connect</a><a href="vehicle.html">Vehicle</a><a href="speed-test.html">Speed test</a><a href="history.html">History</a><a href="alerts.html">Alerts</a><a href="settings.html">Settings</a></nav>
+</header>
+
+<section class="spec">
+  <h2>Armed <code>#run-armed</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="run-armed" data-theme="night" style="box-shadow:inset 0 0 0 3px var(--accent), 0 0 0 1px #1A222D">
+    <div class="statusbar"><span class="seg-item" style="color:var(--text-primary);font-weight:600"><svg class="i sm c-accent"><use href="#i-timer"/></svg>Speed test</span><span class="seg-item faint"><span class="link-dot"></span>18 Hz</span><span class="spacer"></span><span class="chip ok" style="height:22px"><svg class="i sm"><use href="#i-satellite"/></svg>GPS good</span><span class="seg-item tnum">14:02</span></div>
+    <div style="position:absolute;inset:30px 0 0 0;display:grid;grid-template-columns:1.3fr 1fr;gap:20px;padding:10px 24px 20px">
+      <div class="stack" style="justify-content:center;gap:10px">
+        <span class="row-flex" style="gap:10px"><span style="width:14px;height:14px;border-radius:7px;background:var(--accent);box-shadow:0 0 0 6px var(--accent-muted)"></span><span class="num c-accent" style="font-size:64px;letter-spacing:2px">ARMED</span></span>
+        <p style="margin:0;font-size:17px;max-width:30ch">Stand still, then go. The timer starts when you pass 1 km/h.</p>
+        <div class="row-flex" style="gap:6px;flex-wrap:wrap;margin-top:6px"><span class="chip">0–30</span><span class="chip">0–50</span><span class="chip on">0–60</span><span class="chip">30–60</span><span class="chip dim">0–100 · above top speed</span></div>
+      </div>
+      <div class="stack" style="justify-content:center;gap:12px">
+        <div class="panel pad stack" style="gap:2px">
+          <span class="t-label muted">Now</span>
+          <span class="val"><span class="num" style="font-size:64px">0.0</span><span class="unit">km/h</span></span>
+        </div>
+        <div class="panel list" style="font-size:13px">
+          <div class="lrow" style="min-height:38px"><svg class="i sm c-ok"><use href="#i-battery-medium"/></svg><span class="lt">Battery</span><span class="tnum">72 % · 64.8 V</span></div>
+          <div class="lrow" style="min-height:38px"><svg class="i sm c-ok"><use href="#i-thermometer"/></svg><span class="lt">Motor</span><span class="tnum">34 °C</span></div>
+        </div>
+        <span class="btn big" style="align-self:stretch">Disarm</span>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>Armed state is unmissable:</b> accent frame edge, word ARMED, pulsing dot. Disarm is a big 56 dp target.</li>
+    <li>The start conditions (battery and temperature) are shown so runs are comparable later.</li>
+    <li>Brackets above the vehicle's recorded top speed are shown as dim chips, never as failures.</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Running <code>#run-live</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="run-live" data-theme="night" style="box-shadow:inset 0 0 0 3px var(--metric-drive), 0 0 0 1px #1A222D">
+    <div class="statusbar"><span class="seg-item" style="color:var(--text-primary);font-weight:600"><svg class="i sm c-drive"><use href="#i-timer"/></svg>Running</span><span class="spacer"></span><span class="chip ok" style="height:22px"><svg class="i sm"><use href="#i-satellite"/></svg>GPS good</span></div>
+    <div style="position:absolute;inset:30px 0 0 0;display:grid;grid-template-columns:1.35fr 1fr;gap:18px;padding:6px 24px 18px">
+      <div class="stack" style="gap:6px;justify-content:center">
+        <span class="val"><span class="num" style="font-size:150px;line-height:.85">3.84</span><span class="unit" style="font-size:18px">s</span></span>
+        <span class="val"><span class="num c-drive" style="font-size:48px">52</span><span class="unit">km/h</span><span class="faint" style="margin-left:14px;font-size:13px">3.02 kW · 57.8 V</span></span>
+        <svg class="chart" width="470" height="110" data-series="accent:run-a:frac=0.48" data-ymin="0" data-ymax="70" data-yticks="0,30,60" data-hlines="60:secondary"></svg>
+      </div>
+      <div class="stack" style="justify-content:center;gap:8px">
+        <span class="t-label muted">Splits</span>
+        <div class="panel list">
+          <div class="lrow"><svg class="i c-ok"><use href="#i-check"/></svg><span class="lt">0–30</span><span class="num" style="font-size:28px">1.62</span><span class="faint">s</span></div>
+          <div class="lrow"><svg class="i c-ok"><use href="#i-check"/></svg><span class="lt">0–50</span><span class="num" style="font-size:28px">3.41</span><span class="faint">s</span></div>
+          <div class="lrow sel"><svg class="i c-drive"><use href="#i-flag"/></svg><span class="lt" style="font-weight:600">0–60</span><span class="num faint" style="font-size:28px">…</span></div>
+          <div class="lrow"><svg class="i faint"><use href="#i-flag"/></svg><span class="lt muted">30–60</span><span class="num faint" style="font-size:28px">…</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>Timer is the hero</b> (150 dp). It is drawn in Skia from a shared value, never via React state.</li>
+    <li>Splits tick in as each bracket is crossed. The crossing time is interpolated between the two samples around the target.</li>
+    <li>The run aborts on a speed drop or timeout and shows why ("Slowed down at 44 km/h").</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Result <code>#run-result</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="run-result" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a class="on"><svg class="i"><use href="#i-timer"/></svg></a><a><svg class="i"><use href="#i-history"/></svg></a><a><svg class="i"><use href="#i-bike"/></svg></a><a><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><div class="stack" style="gap:0"><h1 class="t-title">Run result</h1><span class="faint" style="font-size:12px">Today 14:02 · 72 % · 34 °C</span></div><span class="spacer"></span><span class="btn sm"><svg class="i sm"><use href="#i-git-compare"/></svg>Compare</span><span class="btn sm primary"><svg class="i sm"><use href="#i-play"/></svg>Arm again</span></div>
+        <div class="content">
+          <div class="col" style="width:250px;flex:none">
+            <div class="panel pad stack" style="gap:0">
+              <span class="t-label muted">0–60 km/h</span>
+              <span class="val"><span class="num" style="font-size:64px">4.92</span><span class="unit">s</span><span class="chip ok" style="margin-left:auto;height:22px">Best</span></span>
+            </div>
+            <div class="panel list">
+              <div class="lrow" style="min-height:38px"><span class="lt">0–30</span><span class="num" style="font-size:20px">1.71 <small class="faint" style="font:500 11px var(--font-ui)">s</small></span></div>
+              <div class="lrow" style="min-height:38px"><span class="lt">0–50</span><span class="num" style="font-size:20px">3.48 <small class="faint" style="font:500 11px var(--font-ui)">s</small></span></div>
+              <div class="lrow" style="min-height:38px"><span class="lt">30–60</span><span class="num" style="font-size:20px">3.21 <small class="faint" style="font:500 11px var(--font-ui)">s</small></span></div>
+              <div class="lrow dis" style="min-height:38px"><span class="lt">0–100</span><span style="font-size:12px">Not reached · top 64</span></div>
+            </div>
+          </div>
+          <div class="col" style="flex:1">
+            <div class="panel" style="padding:8px 10px 4px">
+              <div class="row-flex" style="font-size:12px;gap:14px;padding:0 4px 4px"><span class="row-flex" style="gap:5px"><i style="width:14px;height:3px;border-radius:2px;background:var(--accent)"></i>Speed</span><span class="spacer"></span><span class="faint">km/h</span></div>
+              <svg class="chart" width="500" height="186" data-series="accent:run-a" data-ymin="0" data-ymax="70" data-yticks="0,20,40,60" data-xlabels="0 s,2 s,4 s,6 s,8 s" data-hlines="60:secondary:60"></svg>
+            </div>
+            <div class="row-flex" style="gap:8px">
+              <div class="panel pad" style="flex:1;padding:8px 12px"><span class="t-label muted">Peak power</span><div class="num c-drive" style="font-size:24px">3.15 <small class="faint" style="font:500 11px var(--font-ui)">kW</small></div></div>
+              <div class="panel pad" style="flex:1;padding:8px 12px"><span class="t-label muted">Min voltage</span><div class="num c-volt" style="font-size:24px">58.2 <small class="faint" style="font:500 11px var(--font-ui)">V</small></div></div>
+              <div class="panel pad" style="flex:1;padding:8px 12px"><span class="t-label muted">Max sag</span><div class="num" style="font-size:24px">6.6 <small class="faint" style="font:500 11px var(--font-ui)">V</small></div></div>
+              <div class="panel pad" style="flex:1;padding:8px 12px"><span class="t-label muted">Motor</span><div class="num c-temp" style="font-size:24px">41 <small class="faint" style="font:500 11px var(--font-ui)">°C</small></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>Headline = the default bracket (0–60, configurable). "Best" appears when it beats every earlier run.</li>
+    <li>The chart shows the full curve at full rate. The dashed line marks the target. Scrub with a finger to read speed, power and voltage at a time.</li>
+    <li>"Not reached" names the top speed so the rider knows why.</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Compare runs <code>#run-compare</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="run-compare" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a class="on"><svg class="i"><use href="#i-timer"/></svg></a><a><svg class="i"><use href="#i-history"/></svg></a><a><svg class="i"><use href="#i-bike"/></svg></a><a><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><h1 class="t-title">Compare runs</h1><span class="segc" style="margin-left:12px"><span class="on">Speed</span><span>Power</span><span>Voltage</span></span></div>
+        <div class="content">
+          <div class="col" style="flex:1">
+            <div class="panel" style="padding:10px 10px 4px">
+              <svg class="chart" width="470" height="270" data-series="accent:run-a;drive:run-b;voltage:run-c" data-ymin="0" data-ymax="70" data-yticks="0,20,40,60" data-xlabels="0 s,2 s,4 s,6 s,8 s" data-hlines="60:secondary" data-scrub="0.46"></svg>
+            </div>
+          </div>
+          <div class="col" style="width:290px;flex:none">
+            <div class="panel list">
+              <div class="lrow"><i style="width:4px;height:34px;border-radius:2px;background:var(--accent)"></i><span class="lt"><span>Today 14:02</span><span class="sub">72 % · 34 °C</span></span><span class="num" style="font-size:22px">4.92</span></div>
+              <div class="lrow"><i style="width:4px;height:34px;border-radius:2px;background:var(--metric-drive)"></i><span class="lt"><span>Mon 18:40</span><span class="sub">55 % · 29 °C</span></span><span class="num" style="font-size:22px">5.31</span></div>
+              <div class="lrow"><i style="width:4px;height:34px;border-radius:2px;background:var(--metric-voltage)"></i><span class="lt"><span>12 Sep 09:15</span><span class="sub">31 % · 22 °C</span></span><span class="num" style="font-size:22px">5.87</span></div>
+            </div>
+            <div class="panel pad" style="font-size:13px">
+              <div class="row-flex" style="justify-content:space-between"><span class="muted">At the scrub line (3.7 s)</span></div>
+              <div class="kv"><span><i style="display:inline-block;width:8px;height:8px;border-radius:4px;background:var(--accent)"></i> Today</span><span>55.1<small>km/h</small></span></div>
+              <div class="kv"><span><i style="display:inline-block;width:8px;height:8px;border-radius:4px;background:var(--metric-drive)"></i> Mon</span><span>52.6<small>km/h</small></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>Up to 4 runs overlay. Series colours come from the metric palette in fixed order: accent, drive, voltage, regen.</li>
+    <li>The start conditions (charge, temperature) sit next to each time, because a low battery explains a slow run.</li>
+  </ul>
+</section>
+
+<script src="icons.js"></script>
+<script src="kit.js"></script>
+</body>
+</html>

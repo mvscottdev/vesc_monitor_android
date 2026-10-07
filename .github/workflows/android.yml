@@ -1,0 +1,88 @@
+name: android
+
+on:
+  push:
+    paths-ignore:
+      - 'docs/**'
+  workflow_dispatch:
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v5
+      - run: npm ci
+      - run: node scripts/check.mjs
+
+  apk:
+    needs: checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v5
+      - run: npm ci
+      - name: Generate the native project
+        run: npx expo prebuild --platform android --clean --no-install
+      - name: Signing key
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$ANDROID_KEYSTORE_BASE64" ]; then
+            echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/upload.jks"
+            echo "ORG_GRADLE_PROJECT_vescStoreFile=$RUNNER_TEMP/upload.jks" >> "$GITHUB_ENV"
+            echo "Release is signed with the upload key from the repository secrets."
+          else
+            echo "::notice::No ANDROID_KEYSTORE_BASE64 secret: the release APK is signed with the debug key."
+          fi
+      - name: Build the release APK
+        working-directory: android
+        env:
+          ORG_GRADLE_PROJECT_vescStorePassword: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ORG_GRADLE_PROJECT_vescKeyAlias: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ORG_GRADLE_PROJECT_vescKeyPassword: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          # gradle.properties has no trailing newline: start a new line first.
+          printf "\norg.gradle.jvmargs=-Xmx6g -XX:MaxMetaspaceSize=1g\n" >> gradle.properties
+          ./gradlew assembleRelease --no-daemon
+      - name: Name the artifact
+        id: meta
+        run: echo "sha=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vesc-monitor-${{ steps.meta.outputs.sha }}
+          path: android/app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+          retention-days: 30
+      # Room writes its exported schema while compiling; keep it so it can be committed.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: room-schema-${{ steps.meta.outputs.sha }}
+          path: modules/vesc/schemas/**/*.json
+          if-no-files-found: warn
+          retention-days: 30

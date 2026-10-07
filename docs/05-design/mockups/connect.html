@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect mockups</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="kit.css">
+</head>
+<body class="gallery">
+<header>
+  <h1>Connect &amp; detect</h1>
+  <p>First run, and whenever no device is connected. The app finds the BLE bridge, then works out on its own which controllers sit behind it. The rider only confirms names.</p>
+  <nav><a href="index.html">All screens</a><a href="dashboard.html">Dashboard</a><a href="dashboard-edit.html">Edit layout</a><a href="connect.html">Connect</a><a href="vehicle.html">Vehicle</a><a href="speed-test.html">Speed test</a><a href="history.html">History</a><a href="alerts.html">Alerts</a><a href="settings.html">Settings</a></nav>
+</header>
+
+<section class="spec">
+  <h2>Scan <code>#connect-scan</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="connect-scan" data-theme="night">
+    <div style="position:absolute;inset:0;display:grid;grid-template-columns:320px 1fr;gap:24px;padding:28px 28px 22px">
+      <div class="stack" style="gap:14px">
+        <div style="width:64px;height:64px;border-radius:20px;display:grid;place-items:center;background:var(--accent-muted);color:var(--accent);box-shadow:0 0 40px -6px var(--accent)"><svg class="i" style="width:32px;height:32px"><use href="#i-bluetooth-searching"/></svg></div>
+        <h1 class="t-title" style="margin:0;font-size:24px">Connect your vehicle</h1>
+        <p class="muted" style="margin:0;max-width:34ch">Turn the scooter or bike on. The app lists BLE bridges nearby and never changes anything on the controller.</p>
+        <span class="spacer"></span>
+        <div class="panel">
+          <div class="lrow"><span class="lt"><span>Auto-connect</span><span class="sub">When the app opens</span></span><span class="chip">Last device<svg class="i sm"><use href="#i-chevron-down"/></svg></span></div>
+          <div class="lrow"><span class="lt"><span>Show all BLE devices</span><span class="sub">Not only known UART bridges</span></span><span class="switch"></span></div>
+        </div>
+      </div>
+      <div class="stack" style="gap:10px;min-width:0">
+        <div class="row-flex"><span class="t-label muted">Nearby</span><span class="spacer"></span><span class="row-flex faint" style="font-size:12px;gap:6px"><svg class="i sm c-accent"><use href="#i-refresh-cw"/></svg>Scanning…</span></div>
+        <div class="panel list">
+          <div class="lrow sel">
+            <span class="lead-ic" style="color:var(--accent)"><svg class="i"><use href="#i-bluetooth-connected"/></svg></span>
+            <span class="lt"><span style="font-weight:600">VESC BLE <span class="chip on" style="height:20px;font-size:10.5px;margin-left:6px">Known</span></span><span class="sub">Nordic UART · last used yesterday</span></span>
+            <span class="rssi"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="tnum faint" style="font-size:12px;width:52px;text-align:right">−54 dBm</span>
+          </div>
+          <div class="lrow">
+            <span class="lead-ic"><svg class="i"><use href="#i-bluetooth"/></svg></span>
+            <span class="lt"><span>VESC Express</span><span class="sub">VESC Express · Nordic UART</span></span>
+            <span class="rssi"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="tnum faint" style="font-size:12px;width:52px;text-align:right">−67 dBm</span>
+          </div>
+          <div class="lrow">
+            <span class="lead-ic"><svg class="i"><use href="#i-bluetooth"/></svg></span>
+            <span class="lt"><span>HMSoft</span><span class="sub">Generic UART (FFE0)</span></span>
+            <span class="rssi"><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="tnum faint" style="font-size:12px;width:52px;text-align:right">−78 dBm</span>
+          </div>
+          <div class="lrow dis">
+            <span class="lead-ic"><svg class="i"><use href="#i-bluetooth"/></svg></span>
+            <span class="lt"><span>Unnamed device</span><span class="sub">No UART service found</span></span>
+            <span class="rssi"><i class="on"></i><i></i><i></i><i></i></span><span class="tnum faint" style="font-size:12px;width:52px;text-align:right">−91 dBm</span>
+          </div>
+        </div>
+        <p class="faint" style="margin:0;font-size:12px"><svg class="i sm" style="vertical-align:-3px"><use href="#i-info"/></svg> A bridge talks to one app at a time. Close VESC Tool first.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>Order:</b> known devices first, then by signal. The subtitle names the detected bridge type (Nordic UART, VESC Express, generic FFE0 UART).</li>
+    <li>Tapping a row connects at once. There is no separate Connect button.</li>
+    <li>With "Show all" off, only devices with a known UART service appear. A device without one stays disabled and shows why.</li>
+    <li>Permissions are asked here the first time (nearby devices, notifications), with one sentence on why.</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Detect controllers <code>#connect-detect</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="connect-detect" data-theme="night">
+    <div style="position:absolute;inset:0;display:grid;grid-template-columns:300px 1fr;gap:24px;padding:24px 28px 20px">
+      <div class="stack" style="gap:10px">
+        <h1 class="t-title" style="margin:0">Setting up VESC BLE</h1>
+        <div class="steps">
+          <div class="step done"><span class="dot"><svg class="i"><use href="#i-check"/></svg></span><span class="lt stack" style="gap:0"><span>Connected</span><span class="faint" style="font-size:12px">20 B packets · 2 s</span></span></div>
+          <div class="step done"><span class="dot"><svg class="i"><use href="#i-check"/></svg></span><span class="stack" style="gap:0"><span>Firmware 6.02</span><span class="faint t-mono">hw 75_300</span></span></div>
+          <div class="step now"><span class="dot"><svg class="i"><use href="#i-scan-line"/></svg></span><span class="stack" style="gap:0"><span>Looking for more controllers</span><span class="faint" style="font-size:12px">CAN bus · 2 found</span></span></div>
+          <div class="step"><span class="dot"><svg class="i"><use href="#i-bike"/></svg></span><span class="stack" style="gap:0"><span class="muted">Read vehicle settings</span><span class="faint" style="font-size:12px">wheel, motor, battery</span></span></div>
+        </div>
+      </div>
+      <div class="stack" style="gap:10px;min-width:0">
+        <span class="t-label muted">Found on this vehicle</span>
+        <div class="panel list">
+          <div class="lrow"><span class="lead-ic"><svg class="i"><use href="#i-cpu"/></svg></span>
+            <span class="lt"><span class="row-flex" style="gap:8px"><span class="field" style="height:34px;width:150px;font:500 14px var(--font-ui)">Rear<svg class="i sm faint" style="margin-left:auto"><use href="#i-pencil"/></svg></span></span><span class="sub">Local · fw 6.02 · motor controller</span></span>
+            <span class="switch on"></span></div>
+          <div class="lrow"><span class="lead-ic"><svg class="i"><use href="#i-cpu"/></svg></span>
+            <span class="lt"><span class="row-flex" style="gap:8px"><span class="field" style="height:34px;width:150px;font:500 14px var(--font-ui)">Front<svg class="i sm faint" style="margin-left:auto"><use href="#i-pencil"/></svg></span></span><span class="sub">CAN 1 · fw 6.02 · motor controller</span></span>
+            <span class="switch on"></span></div>
+          <div class="lrow dis"><span class="lead-ic"><svg class="i"><use href="#i-battery-charging"/></svg></span>
+            <span class="lt"><span>BMS</span><span class="sub">CAN 10 · not a motor controller, skipped</span></span>
+            <span class="switch dis"></span></div>
+        </div>
+        <span class="spacer"></span>
+        <div class="row-flex" style="justify-content:flex-end"><span class="btn ghost">Skip naming</span><span class="btn primary">Continue</span></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>Detection runs on every connect.</b> This screen only appears the first time, or when the set of controllers changed.</li>
+    <li><b>Names:</b> one controller is called "Motor". Two on a scooter default to Front/Rear. Everything is editable later in Vehicle.</li>
+    <li>Non-motor CAN nodes (BMS, IO boards, VESC Express) are listed so the rider sees them, but they are never polled for motor values.</li>
+    <li>With one controller the list has one row and the screen closes by itself after 1.5 s.</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Connection failed <code>#connect-failed</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="connect-failed" data-theme="night">
+    <div style="position:absolute;inset:0;display:grid;place-items:center">
+      <div class="panel" style="width:520px;padding:26px 28px;display:flex;gap:20px">
+        <div style="width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--state-warn) 16%,transparent);color:var(--state-warn);flex:none"><svg class="i lg"><use href="#i-unplug"/></svg></div>
+        <div class="stack" style="gap:8px">
+          <h1 class="t-title" style="margin:0">VESC BLE didn't answer</h1>
+          <p class="muted" style="margin:0">Another app may be connected to it. Close VESC Tool or any other app that uses the scooter, then try again.</p>
+          <p class="t-mono faint" style="margin:0">GATT 133 · 3 attempts</p>
+          <div class="row-flex" style="margin-top:8px"><span class="btn primary"><svg class="i"><use href="#i-refresh-cw"/></svg>Try again</span><span class="btn ghost">Choose another device</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>Errors say what happened and what to do. The raw code is shown small, for bug reports.</li>
+    <li>Other variants of this card: Bluetooth is off (button opens the system toggle), permission denied (button opens app settings), battery optimisation is killing the session (links to the guide in Settings).</li>
+  </ul>
+</section>
+
+<script src="icons.js"></script>
+<script src="kit.js"></script>
+</body>
+</html>

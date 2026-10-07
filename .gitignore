@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Generated native projects (root-anchored so modules/vesc/android stays tracked)
+/android/
+/ios/
+
+# Expo / Metro
+.expo/
+dist/
+web-build/
+*.tsbuildinfo
+
+# Gradle / Kotlin
+.gradle/
+build/
+.kotlin/
+local.properties
+
+# Signing material
+*.jks
+*.keystore
+*.p12
+keystore.properties
+
+# Editors / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

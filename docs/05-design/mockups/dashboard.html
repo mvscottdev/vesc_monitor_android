@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard mockups</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="kit.css">
+</head>
+<body class="gallery">
+<header>
+  <h1>Dashboard · ride mode</h1>
+  <p>The home screen. Landscape, full screen, no nav rail. One glance: speed in the middle, battery on the left, power, heat and voltage on the right. Swipe for more pages. Tap the menu button (top left) for the rest of the app.</p>
+  <nav><a href="index.html">All screens</a><a href="dashboard.html">Dashboard</a><a href="dashboard-edit.html">Edit layout</a><a href="connect.html">Connect</a><a href="vehicle.html">Vehicle</a><a href="speed-test.html">Speed test</a><a href="history.html">History</a><a href="alerts.html">Alerts</a><a href="settings.html">Settings</a></nav>
+</header>
+
+<!-- ============================================================ -->
+<section class="spec">
+  <h2>Main page, one controller <code>#dash-ride-single</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="dash-ride-single" data-theme="night">
+    <div class="statusbar">
+      <span class="menu-btn"><svg class="i sm"><use href="#i-menu"/></svg></span>
+      <span class="seg-item"><span class="link-dot"></span>VESC BLE</span>
+      <span class="seg-item tnum faint">18 Hz</span>
+      <span class="seg-item faint"><svg class="i sm"><use href="#i-satellite"/></svg>GPS off</span>
+      <span class="dots"><i class="on"></i><i></i><i></i></span>
+      <span class="rec tnum">REC 12:41</span>
+      <span class="seg-item tnum">14:32</span>
+    </div>
+    <div class="wgrid">
+      <!-- Battery -->
+      <div class="w" style="--x:1;--y:1;--w:3;--h:3">
+        <div class="w-head"><svg class="i sm c-ok"><use href="#i-battery-medium"/></svg><span class="t-label">Battery</span></div>
+        <div class="w-body" style="gap:10px">
+          <span class="val"><span class="num" style="font-size:64px">72</span><span class="unit">%</span></span>
+          <div class="bar thick"><i style="width:72%;--c:var(--metric-battery)"></i></div>
+        </div>
+        <div class="w-foot"><span><b>62.4</b> V</span><span><b>3.90</b> V/cell</span></div>
+      </div>
+      <!-- Range -->
+      <div class="w" style="--x:1;--y:4;--w:3;--h:3">
+        <div class="w-head"><svg class="i sm muted"><use href="#i-route"/></svg><span class="t-label">Range</span></div>
+        <div class="w-body">
+          <span class="val"><span class="num" style="font-size:64px">31</span><span class="unit">km</span></span>
+        </div>
+        <div class="w-foot"><span><b>18.6</b> Wh/km</span><span><b>12.4</b> km trip</span></div>
+      </div>
+      <!-- Speed -->
+      <div class="w bare" style="--x:4;--y:1;--w:5;--h:6;padding:0">
+        <div style="position:relative;flex:1">
+          <svg class="gauge" width="360" height="360" data-value="37" data-max="80" data-peak="52" data-ticks="0,20,40,60,80" data-minor="5" data-color="accent" data-sweep="250" data-stroke="14" data-glow style="position:absolute;left:50%;top:50%;transform:translate(-50%,-48%)"></svg>
+          <div class="gauge-center" style="gap:2px;padding-top:14px">
+            <span class="src" style="margin:0 0 6px">VESC</span>
+            <span class="num t-hero" style="font-size:112px">37</span>
+            <span class="unit muted" style="font-size:15px;font-weight:500">km/h</span>
+          </div>
+          <div class="w-foot" style="position:absolute;left:0;right:0;bottom:6px;justify-content:center;gap:18px"><span>max <b>52</b></span><span>avg <b>24</b></span></div>
+        </div>
+      </div>
+      <!-- Power -->
+      <div class="w" style="--x:9;--y:1;--w:4;--h:2">
+        <div class="w-head"><svg class="i sm c-drive"><use href="#i-zap"/></svg><span class="t-label">Power</span><span class="w-foot" style="margin-left:auto"><span><b>29.5</b> A</span></span></div>
+        <div class="w-body" style="gap:6px">
+          <span class="val"><span class="num" style="font-size:40px">1.84</span><span class="unit">kW</span></span>
+          <div class="bibar"><span class="regen" style="width:0"></span><span class="drive" style="width:36.8%"></span><span class="zero"></span><span class="peak" style="left:78%"></span></div>
+        </div>
+      </div>
+      <!-- Temperatures -->
+      <div class="w" style="--x:9;--y:3;--w:4;--h:2">
+        <div class="w-head"><svg class="i sm c-temp"><use href="#i-thermometer"/></svg><span class="t-label">Temperature</span></div>
+        <div class="w-body" style="flex-direction:row;gap:14px">
+          <div class="stack" style="flex:1;gap:5px">
+            <span class="val"><span class="num" style="font-size:34px">68</span><span class="unit">°C motor</span></span>
+            <div class="bar"><i style="width:62%;--c:var(--state-ok)"></i></div>
+          </div>
+          <div class="stack" style="flex:1;gap:5px">
+            <span class="val"><span class="num" style="font-size:34px">52</span><span class="unit">°C FET</span></span>
+            <div class="bar"><i style="width:47%;--c:var(--state-ok)"></i></div>
+          </div>
+        </div>
+      </div>
+      <!-- Voltage + sag -->
+      <div class="w" style="--x:9;--y:5;--w:4;--h:2">
+        <div class="w-head"><svg class="i sm c-volt"><use href="#i-trending-down"/></svg><span class="t-label">Sag</span><span class="w-foot" style="margin-left:auto"><span>min <b>58.9</b> V</span></span></div>
+        <div class="w-body" style="flex-direction:row;align-items:center;gap:12px">
+          <span class="val"><span class="num" style="font-size:34px">3.1</span><span class="unit">V</span></span>
+          <svg class="spark" width="150" height="40" data-series="live-volt" data-color="voltage" data-area style="flex:1"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>Grid:</b> 12 × 6 cells. Speed 5×6, Battery 3×3, Range 3×3, Power, Temperature and Sag 4×2 each. This is the default preset for 1 controller.</li>
+    <li><b>Speed:</b> radial gauge with a 250° sweep. The scale max rounds the vehicle's top speed up to the next 20. A white tick marks the ride's max. The chip above the number shows where speed comes from (VESC / ERPM / GPS).</li>
+    <li><b>Status strip:</b> link state, measured poll rate, GPS, page dots, the REC pill (tap to toggle logging, shows ride time) and the clock.</li>
+    <li><b>Power bar:</b> regen goes left of the zero line (teal), drive goes right (amber). The thin white line is the ride's peak.</li>
+    <li><b>Temperature bars</b> are scaled to the controller's derating start. Colour follows the zones: ok, then warn at 10 °C before derating, then crit.</li>
+    <li><b>Rule:</b> live numbers use the display face with tabular digits, at least 28 dp. Labels are 11 dp uppercase.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<section class="spec">
+  <h2>Controllers page, two controllers <code>#dash-ride-dual</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="dash-ride-dual" data-theme="night">
+    <div class="statusbar">
+      <span class="menu-btn"><svg class="i sm"><use href="#i-menu"/></svg></span>
+      <span class="seg-item"><span class="link-dot"></span>VESC BLE</span>
+      <span class="seg-item tnum faint">14 Hz</span>
+      <span class="seg-item faint"><svg class="i sm"><use href="#i-cpu"/></svg>2 controllers</span>
+      <span class="dots"><i></i><i class="on"></i><i></i></span>
+      <span class="rec tnum">REC 12:41</span>
+      <span class="seg-item tnum">14:32</span>
+    </div>
+    <div class="wgrid">
+      <div class="w" style="--x:1;--y:1;--w:4;--h:2">
+        <div class="w-head"><span class="t-label">Speed</span><span class="src">Combined</span></div>
+        <div class="w-body"><span class="val"><span class="num" style="font-size:52px">37</span><span class="unit">km/h</span></span></div>
+      </div>
+      <div class="w" style="--x:1;--y:3;--w:4;--h:2">
+        <div class="w-head"><span class="t-label">Power</span><span class="src">Sum</span></div>
+        <div class="w-body" style="gap:6px"><span class="val"><span class="num c-drive" style="font-size:40px">1.84</span><span class="unit">kW</span></span>
+          <div class="bibar"><span class="drive" style="width:36.8%"></span><span class="zero"></span></div></div>
+      </div>
+      <div class="w" style="--x:1;--y:5;--w:4;--h:2">
+        <div class="w-head"><span class="t-label">Duty</span><span class="src">Max</span></div>
+        <div class="w-body" style="gap:6px"><span class="val"><span class="num" style="font-size:40px">46</span><span class="unit">%</span></span>
+          <div class="bar"><i style="width:46%;--c:var(--metric-duty)"></i></div></div>
+      </div>
+      <!-- Controller cards -->
+      <div class="w" style="--x:5;--y:1;--w:4;--h:6">
+        <div class="w-head"><svg class="i sm muted"><use href="#i-cpu"/></svg><span class="t-heading">Front</span><span class="src">CAN 1</span></div>
+        <div class="w-body" style="justify-content:flex-start;padding-top:8px">
+          <div class="val" style="margin-bottom:6px"><span class="num" style="font-size:40px">36.8</span><span class="unit">km/h</span></div>
+          <div class="kv"><span>Motor current</span><span>38.0<small>A</small></span></div>
+          <div class="kv"><span>Battery current</span><span>14.2<small>A</small></span></div>
+          <div class="kv"><span>Power</span><span class="c-drive">0.89<small>kW</small></span></div>
+          <div class="kv"><span>Duty</span><span>41<small>%</small></span></div>
+          <div class="kv"><span>Motor · FET</span><span>61<small>°C</small> · 48<small>°C</small></span></div>
+        </div>
+        <div class="w-foot"><span class="chip ok" style="height:22px"><svg class="i sm"><use href="#i-check"/></svg>No fault</span></div>
+      </div>
+      <div class="w warn" style="--x:9;--y:1;--w:4;--h:6">
+        <div class="w-head"><svg class="i sm muted"><use href="#i-cpu"/></svg><span class="t-heading">Rear</span><span class="src">Local</span></div>
+        <div class="w-body" style="justify-content:flex-start;padding-top:8px">
+          <div class="val" style="margin-bottom:6px"><span class="num c-warn" style="font-size:40px">41.2</span><span class="unit">km/h</span></div>
+          <div class="kv"><span>Motor current</span><span>44.5<small>A</small></span></div>
+          <div class="kv"><span>Battery current</span><span>15.3<small>A</small></span></div>
+          <div class="kv"><span>Power</span><span class="c-drive">0.95<small>kW</small></span></div>
+          <div class="kv"><span>Duty</span><span>46<small>%</small></span></div>
+          <div class="kv"><span>Motor · FET</span><span>68<small>°C</small> · 52<small>°C</small></span></div>
+        </div>
+        <div class="w-foot"><span class="chip warn" style="height:22px"><svg class="i sm"><use href="#i-wind"/></svg>Wheel slip · +12%</span></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>Only with 2+ controllers.</b> With one controller this page and every source selector are hidden.</li>
+    <li><b>Controller card:</b> one per controller, named by the user (default Front/Rear on a scooter). The chip shows the link: Local or CAN id.</li>
+    <li><b>Slip:</b> when the controllers' speeds disagree beyond the tolerance, the faster one's card turns warn and the combined speed uses the lower value.</li>
+    <li>Combined widgets label their rule: Combined, Sum, Max.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<section class="spec">
+  <h2>Critical alert over the dashboard <code>#dash-alert</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="dash-alert" data-theme="night">
+    <div class="statusbar">
+      <span class="menu-btn"><svg class="i sm"><use href="#i-menu"/></svg></span>
+      <span class="seg-item"><span class="link-dot"></span>VESC BLE</span>
+      <span class="seg-item tnum faint">18 Hz</span>
+      <span class="dots"><i class="on"></i><i></i><i></i></span>
+      <span class="rec tnum">REC 31:07</span>
+      <span class="seg-item tnum">14:51</span>
+    </div>
+    <div class="banner crit" style="min-width:640px">
+      <span class="sev"><svg class="i lg"><use href="#i-thermometer-sun"/></svg></span>
+      <span class="bt"><b>Motor overheating · 96 °C</b><span>The controller cuts power above 95 °C. Ease off to let it cool.</span></span>
+      <span class="btn sm">Mute 5 min</span>
+      <span class="icon-btn" style="width:34px;height:34px;border-radius:10px"><svg class="i sm"><use href="#i-x"/></svg></span>
+    </div>
+    <div class="wgrid">
+      <div class="w" style="--x:1;--y:1;--w:3;--h:3">
+        <div class="w-head"><svg class="i sm c-ok"><use href="#i-battery-medium"/></svg><span class="t-label">Battery</span></div>
+        <div class="w-body" style="gap:10px"><span class="val"><span class="num" style="font-size:64px">54</span><span class="unit">%</span></span><div class="bar thick"><i style="width:54%;--c:var(--metric-battery)"></i></div></div>
+        <div class="w-foot"><span><b>59.8</b> V</span><span><b>3.74</b> V/cell</span></div>
+      </div>
+      <div class="w" style="--x:1;--y:4;--w:3;--h:3">
+        <div class="w-head"><svg class="i sm muted"><use href="#i-route"/></svg><span class="t-label">Range</span></div>
+        <div class="w-body"><span class="val"><span class="num" style="font-size:64px">22</span><span class="unit">km</span></span></div>
+        <div class="w-foot"><span><b>19.4</b> Wh/km</span><span><b>21.0</b> km trip</span></div>
+      </div>
+      <div class="w bare" style="--x:4;--y:1;--w:5;--h:6;padding:0">
+        <div style="position:relative;flex:1">
+          <svg class="gauge" width="360" height="360" data-value="44" data-max="80" data-peak="58" data-ticks="0,20,40,60,80" data-minor="5" data-color="accent" data-sweep="250" data-stroke="14" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-48%)"></svg>
+          <div class="gauge-center" style="gap:2px;padding-top:14px"><span class="src" style="margin:0 0 6px">VESC</span><span class="num" style="font-size:112px">44</span><span class="unit muted" style="font-size:15px">km/h</span></div>
+        </div>
+      </div>
+      <div class="w" style="--x:9;--y:1;--w:4;--h:2">
+        <div class="w-head"><svg class="i sm c-drive"><use href="#i-zap"/></svg><span class="t-label">Power</span></div>
+        <div class="w-body" style="gap:6px"><span class="val"><span class="num" style="font-size:40px">2.62</span><span class="unit">kW</span></span>
+          <div class="bibar"><span class="drive" style="width:52%"></span><span class="zero"></span><span class="peak" style="left:84%"></span></div></div>
+      </div>
+      <div class="w crit pulse" style="--x:9;--y:3;--w:4;--h:2">
+        <div class="w-head"><svg class="i sm c-crit"><use href="#i-thermometer"/></svg><span class="t-label">Temperature</span></div>
+        <div class="w-body" style="flex-direction:row;gap:14px">
+          <div class="stack" style="flex:1;gap:5px"><span class="val"><span class="num c-crit" style="font-size:34px">96</span><span class="unit">°C motor</span></span><div class="bar"><i style="width:100%;--c:var(--state-crit)"></i></div></div>
+          <div class="stack" style="flex:1;gap:5px"><span class="val"><span class="num" style="font-size:34px">71</span><span class="unit">°C FET</span></span><div class="bar"><i style="width:64%;--c:var(--state-ok)"></i></div></div>
+        </div>
+      </div>
+      <div class="w" style="--x:9;--y:5;--w:4;--h:2">
+        <div class="w-head"><svg class="i sm c-volt"><use href="#i-trending-down"/></svg><span class="t-label">Sag</span></div>
+        <div class="w-body" style="flex-direction:row;align-items:center;gap:12px"><span class="val"><span class="num" style="font-size:34px">4.6</span><span class="unit">V</span></span><svg class="spark" width="150" height="40" data-series="live-volt" data-color="voltage" data-area style="flex:1"></svg></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>AlertBanner</b> slides in from the top, over the status strip. Critical alerts stay until the condition clears or the rider mutes them. Warnings auto-hide after 6 s.</li>
+    <li>The widget that caused the alert turns <b>crit</b> and pulses slowly (no pulse with reduced motion).</li>
+    <li>With 2+ controllers the text names the controller ("Rear motor").</li>
+    <li>Sound and vibration fire at the same time. Nothing is spoken aloud.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<section class="spec">
+  <h2>Link lost, reconnecting <code>#dash-reconnecting</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="dash-reconnecting" data-theme="night">
+    <div class="statusbar">
+      <span class="menu-btn"><svg class="i sm"><use href="#i-menu"/></svg></span>
+      <span class="seg-item"><span class="link-dot crit"></span>Reconnecting</span>
+      <span class="seg-item tnum faint">— Hz</span>
+      <span class="dots"><i class="on"></i><i></i><i></i></span>
+      <span class="rec tnum">REC 12:48</span>
+      <span class="seg-item tnum">14:33</span>
+    </div>
+    <div class="banner warn" style="min-width:480px">
+      <span class="sev"><svg class="i lg"><use href="#i-bluetooth-searching"/></svg></span>
+      <span class="bt"><b>Connection lost · retrying</b><span>Attempt 3 · last data 4 s ago. The ride keeps recording.</span></span>
+    </div>
+    <div class="wgrid stale">
+      <div class="w" style="--x:1;--y:1;--w:3;--h:3">
+        <div class="w-head"><svg class="i sm faint"><use href="#i-battery-medium"/></svg><span class="t-label">Battery</span><span class="stale-tag" style="margin-left:auto">4 s</span></div>
+        <div class="w-body" style="gap:10px"><span class="val"><span class="num" style="font-size:64px">72</span><span class="unit">%</span></span><div class="bar thick"><i style="width:72%;--c:var(--metric-battery)"></i></div></div>
+      </div>
+      <div class="w" style="--x:1;--y:4;--w:3;--h:3">
+        <div class="w-head"><svg class="i sm faint"><use href="#i-route"/></svg><span class="t-label">Range</span><span class="stale-tag" style="margin-left:auto">4 s</span></div>
+        <div class="w-body"><span class="val"><span class="num" style="font-size:64px">31</span><span class="unit">km</span></span></div>
+      </div>
+      <div class="w bare" style="--x:4;--y:1;--w:5;--h:6;padding:0">
+        <div style="position:relative;flex:1">
+          <svg class="gauge" width="360" height="360" data-value="0" data-max="80" data-ticks="0,20,40,60,80" data-minor="5" data-color="muted" data-sweep="250" data-stroke="14" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-48%)"></svg>
+          <div class="gauge-center" style="gap:2px;padding-top:14px"><span class="src" style="margin:0 0 6px">No data</span><span class="num faint" style="font-size:112px">––</span><span class="unit muted" style="font-size:15px">km/h</span></div>
+        </div>
+      </div>
+      <div class="w" style="--x:9;--y:1;--w:4;--h:2"><div class="w-head"><span class="t-label">Power</span><span class="stale-tag" style="margin-left:auto">4 s</span></div><div class="w-body"><span class="val"><span class="num" style="font-size:40px">1.84</span><span class="unit">kW</span></span></div></div>
+      <div class="w" style="--x:9;--y:3;--w:4;--h:2"><div class="w-head"><span class="t-label">Temperature</span><span class="stale-tag" style="margin-left:auto">4 s</span></div><div class="w-body" style="flex-direction:row;gap:14px"><span class="val"><span class="num" style="font-size:34px">68</span><span class="unit">°C motor</span></span><span class="val"><span class="num" style="font-size:34px">52</span><span class="unit">°C FET</span></span></div></div>
+      <div class="w" style="--x:9;--y:5;--w:4;--h:2"><div class="w-head"><span class="t-label">Sag</span><span class="stale-tag" style="margin-left:auto">4 s</span></div><div class="w-body"><span class="val"><span class="num" style="font-size:34px">3.1</span><span class="unit">V</span></span></div></div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>Stale values:</b> after 1 s without data, values dim to 35 % and get a dashed age tag. Speed never shows a stale number: it switches to dashes, so the rider never trusts an old speed.</li>
+    <li>The link dot turns crit and the rate shows "—". The banner counts attempts. It hides on the first good frame.</li>
+    <li>For a single controller that stops answering on CAN, only that controller's widgets go stale.</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<section class="spec">
+  <h2>Sun theme, flat glass <code>#dash-sun</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="dash-sun" data-theme="sun">
+    <div class="statusbar">
+      <span class="menu-btn"><svg class="i sm"><use href="#i-menu"/></svg></span>
+      <span class="seg-item"><span class="link-dot"></span>VESC BLE</span>
+      <span class="seg-item tnum">18 Hz</span>
+      <span class="dots"><i class="on"></i><i></i><i></i></span>
+      <span class="rec tnum">REC 12:41</span>
+      <span class="seg-item tnum">14:32</span>
+    </div>
+    <div class="wgrid">
+      <div class="w" style="--x:1;--y:1;--w:3;--h:3">
+        <div class="w-head"><svg class="i sm c-ok"><use href="#i-battery-medium"/></svg><span class="t-label">Battery</span></div>
+        <div class="w-body" style="gap:10px"><span class="val"><span class="num" style="font-size:64px">72</span><span class="unit">%</span></span><div class="bar thick"><i style="width:72%;--c:var(--metric-battery)"></i></div></div>
+        <div class="w-foot"><span><b>62.4</b> V</span><span><b>3.90</b> V/cell</span></div>
+      </div>
+      <div class="w" style="--x:1;--y:4;--w:3;--h:3">
+        <div class="w-head"><svg class="i sm"><use href="#i-route"/></svg><span class="t-label">Range</span></div>
+        <div class="w-body"><span class="val"><span class="num" style="font-size:64px">31</span><span class="unit">km</span></span></div>
+        <div class="w-foot"><span><b>18.6</b> Wh/km</span></div>
+      </div>
+      <div class="w bare" style="--x:4;--y:1;--w:5;--h:6;padding:0">
+        <div style="position:relative;flex:1">
+          <svg class="gauge" width="360" height="360" data-value="37" data-max="80" data-peak="52" data-ticks="0,20,40,60,80" data-minor="5" data-color="accent" data-sweep="250" data-stroke="16" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-48%)"></svg>
+          <div class="gauge-center" style="gap:2px;padding-top:14px"><span class="src" style="margin:0 0 6px">VESC</span><span class="num" style="font-size:112px;font-weight:700">37</span><span class="unit" style="font-size:15px">km/h</span></div>
+        </div>
+      </div>
+      <div class="w" style="--x:9;--y:1;--w:4;--h:2">
+        <div class="w-head"><svg class="i sm c-drive"><use href="#i-zap"/></svg><span class="t-label">Power</span></div>
+        <div class="w-body" style="gap:6px"><span class="val"><span class="num" style="font-size:40px">1.84</span><span class="unit">kW</span></span><div class="bibar"><span class="drive" style="width:36.8%"></span><span class="zero"></span></div></div>
+      </div>
+      <div class="w" style="--x:9;--y:3;--w:4;--h:2">
+        <div class="w-head"><svg class="i sm c-temp"><use href="#i-thermometer"/></svg><span class="t-label">Temperature</span></div>
+        <div class="w-body" style="flex-direction:row;gap:14px"><span class="val"><span class="num" style="font-size:34px">68</span><span class="unit">°C motor</span></span><span class="val"><span class="num" style="font-size:34px">52</span><span class="unit">°C FET</span></span></div>
+      </div>
+      <div class="w" style="--x:9;--y:5;--w:4;--h:2">
+        <div class="w-head"><svg class="i sm c-volt"><use href="#i-trending-down"/></svg><span class="t-label">Sag</span></div>
+        <div class="w-body" style="flex-direction:row;align-items:center;gap:12px"><span class="val"><span class="num" style="font-size:34px">3.1</span><span class="unit">V</span></span><svg class="spark" width="150" height="40" data-series="live-volt" data-color="voltage" style="flex:1"></svg></div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>Sun theme</b> is for direct sunlight: light ground, black text, 1.5 dp dark edges, no glass or glow. Every token has a sun value in <code>tokens.json</code>.</li>
+    <li>Switch it by hand in Settings, or automatically from the ambient light sensor (option). The layout is identical; only tokens change.</li>
+  </ul>
+</section>
+
+<script src="icons.js"></script>
+<script src="kit.js"></script>
+</body>
+</html>

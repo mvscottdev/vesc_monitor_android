@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VESC Monitor screens</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="kit.css">
+<style>
+  .flow { max-width: 1000px; margin: 0 auto 36px; display: flex; flex-direction: column; gap: 12px; }
+  .flow h2 { margin: 0; font: 600 13px var(--font-ui); letter-spacing: 1.2px; text-transform: uppercase; color: #8795A5; }
+  .thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+  .thumb { display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: #C9D3DE; min-width: 0; }
+  .thumb img { width: 100%; height: auto; aspect-ratio: 915 / 412; border-radius: 10px; box-shadow: 0 0 0 1px #1A222D; background: #080B10; display: block; }
+  .thumb:hover img, .thumb:focus-visible img { box-shadow: 0 0 0 2px #7CC8FF; }
+  .thumb:focus-visible { outline: none; }
+  .thumb span { font-size: 13px; }
+  .thumb code { font: 400 11.5px var(--font-mono); color: #5E6B7A; }
+  .swatches { max-width: 1000px; margin: 0 auto 40px; display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+  .sw { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #8795A5; }
+  .sw i { height: 40px; border-radius: 8px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .sw b { font: 500 12px var(--font-mono); color: #C9D3DE; }
+</style>
+</head>
+<body class="gallery">
+<header>
+  <h1>VESC Monitor · screen designs</h1>
+  <p>Landscape, handlebar-mounted, dark first. Every screen of the app with its states, drawn at the 915 × 412 dp reference size. Click a screen for the full frame and its annotations. Tokens live in <code>tokens.json</code>; the spec is <code>design-system.md</code>.</p>
+</header>
+
+<div class="flow"><h2>Ride</h2><div class="thumbs">
+  <a class="thumb" href="dashboard.html#dash-ride-single"><img src="../shots/dash-ride-single.png" alt="Dashboard main page"><span>Dashboard, one controller</span><code>#dash-ride-single</code></a>
+  <a class="thumb" href="dashboard.html#dash-ride-dual"><img src="../shots/dash-ride-dual.png" alt="Controllers page"><span>Controllers page, two controllers</span><code>#dash-ride-dual</code></a>
+  <a class="thumb" href="dashboard.html#dash-alert"><img src="../shots/dash-alert.png" alt="Critical alert"><span>Critical alert</span><code>#dash-alert</code></a>
+  <a class="thumb" href="dashboard.html#dash-reconnecting"><img src="../shots/dash-reconnecting.png" alt="Reconnecting"><span>Link lost, reconnecting</span><code>#dash-reconnecting</code></a>
+  <a class="thumb" href="dashboard.html#dash-sun"><img src="../shots/dash-sun.png" alt="Sun theme"><span>Sun theme</span><code>#dash-sun</code></a>
+</div></div>
+
+<div class="flow"><h2>Customise</h2><div class="thumbs">
+  <a class="thumb" href="dashboard-edit.html#edit-grid"><img src="../shots/edit-grid.png" alt="Grid edit mode"><span>Edit layout</span><code>#edit-grid</code></a>
+  <a class="thumb" href="dashboard-edit.html#edit-picker"><img src="../shots/edit-picker.png" alt="Widget picker"><span>Widget picker</span><code>#edit-picker</code></a>
+</div></div>
+
+<div class="flow"><h2>Connect &amp; set up</h2><div class="thumbs">
+  <a class="thumb" href="connect.html#connect-scan"><img src="../shots/connect-scan.png" alt="Scan"><span>Scan</span><code>#connect-scan</code></a>
+  <a class="thumb" href="connect.html#connect-detect"><img src="../shots/connect-detect.png" alt="Detect controllers"><span>Detect controllers</span><code>#connect-detect</code></a>
+  <a class="thumb" href="connect.html#connect-failed"><img src="../shots/connect-failed.png" alt="Connection failed"><span>Connection failed</span><code>#connect-failed</code></a>
+  <a class="thumb" href="vehicle.html#vehicle-profile"><img src="../shots/vehicle-profile.png" alt="Vehicle profile"><span>Vehicle profile</span><code>#vehicle-profile</code></a>
+  <a class="thumb" href="vehicle.html#vehicle-battery"><img src="../shots/vehicle-battery.png" alt="Battery detection"><span>Battery detection</span><code>#vehicle-battery</code></a>
+  <a class="thumb" href="vehicle.html#vehicle-calibrate"><img src="../shots/vehicle-calibrate.png" alt="Wheel calibration"><span>Wheel calibration</span><code>#vehicle-calibrate</code></a>
+  <a class="thumb" href="vehicle.html#vehicle-calibrate-result"><img src="../shots/vehicle-calibrate-result.png" alt="Calibration result"><span>Calibration result</span><code>#vehicle-calibrate-result</code></a>
+</div></div>
+
+<div class="flow"><h2>Speed test</h2><div class="thumbs">
+  <a class="thumb" href="speed-test.html#run-armed"><img src="../shots/run-armed.png" alt="Armed"><span>Armed</span><code>#run-armed</code></a>
+  <a class="thumb" href="speed-test.html#run-live"><img src="../shots/run-live.png" alt="Running"><span>Running</span><code>#run-live</code></a>
+  <a class="thumb" href="speed-test.html#run-result"><img src="../shots/run-result.png" alt="Result"><span>Result</span><code>#run-result</code></a>
+  <a class="thumb" href="speed-test.html#run-compare"><img src="../shots/run-compare.png" alt="Compare runs"><span>Compare runs</span><code>#run-compare</code></a>
+</div></div>
+
+<div class="flow"><h2>History</h2><div class="thumbs">
+  <a class="thumb" href="history.html#rides-list"><img src="../shots/rides-list.png" alt="Ride list"><span>Ride list</span><code>#rides-list</code></a>
+  <a class="thumb" href="history.html#ride-detail"><img src="../shots/ride-detail.png" alt="Ride detail"><span>Ride detail</span><code>#ride-detail</code></a>
+</div></div>
+
+<div class="flow"><h2>Alerts &amp; settings</h2><div class="thumbs">
+  <a class="thumb" href="alerts.html#alerts-list"><img src="../shots/alerts-list.png" alt="Alert list"><span>Alert list</span><code>#alerts-list</code></a>
+  <a class="thumb" href="alerts.html#alert-edit"><img src="../shots/alert-edit.png" alt="Edit alert"><span>Edit one alert</span><code>#alert-edit</code></a>
+  <a class="thumb" href="settings.html#settings-main"><img src="../shots/settings-main.png" alt="Settings"><span>Settings</span><code>#settings-main</code></a>
+  <a class="thumb" href="settings.html#settings-storage"><img src="../shots/settings-storage.png" alt="Storage"><span>Storage</span><code>#settings-storage</code></a>
+  <a class="thumb" href="settings.html#settings-background"><img src="../shots/settings-background.png" alt="Background guide"><span>Run in background</span><code>#settings-background</code></a>
+  <a class="thumb" href="settings.html#system-notification"><img src="../shots/system-notification.png" alt="Notifications"><span>System notifications</span><code>#system-notification</code></a>
+</div></div>
+
+<div class="flow"><h2>Night palette</h2></div>
+<div class="swatches">
+  <div class="sw"><i style="background:var(--bg)"></i><b>bg</b>ground</div>
+  <div class="sw"><i style="background:var(--accent)"></i><b>accent</b>speed, focus, primary</div>
+  <div class="sw"><i style="background:var(--metric-drive)"></i><b>metric.drive</b>power out</div>
+  <div class="sw"><i style="background:var(--metric-regen)"></i><b>metric.regen</b>power in, battery</div>
+  <div class="sw"><i style="background:var(--metric-voltage)"></i><b>metric.voltage</b>volts, sag</div>
+  <div class="sw"><i style="background:var(--metric-temp)"></i><b>metric.temp</b>heat</div>
+  <div class="sw"><i style="background:var(--state-warn)"></i><b>state.warn</b>attention</div>
+  <div class="sw"><i style="background:var(--state-crit)"></i><b>state.crit</b>act now</div>
+</div>
+</body>
+</html>

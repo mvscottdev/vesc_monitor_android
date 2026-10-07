@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings mockups</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="kit.css">
+</head>
+<body class="gallery">
+<header>
+  <h1>Settings, storage, background, notification</h1>
+  <p>Settings are few and grouped by task. The storage and background pages exist because they are where long rides go wrong: a full phone, or Android killing the connection.</p>
+  <nav><a href="index.html">All screens</a><a href="dashboard.html">Dashboard</a><a href="dashboard-edit.html">Edit layout</a><a href="connect.html">Connect</a><a href="vehicle.html">Vehicle</a><a href="speed-test.html">Speed test</a><a href="history.html">History</a><a href="alerts.html">Alerts</a><a href="settings.html">Settings</a></nav>
+</header>
+
+<section class="spec">
+  <h2>Settings <code>#settings-main</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="settings-main" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a><svg class="i"><use href="#i-timer"/></svg></a><a><svg class="i"><use href="#i-history"/></svg></a><a><svg class="i"><use href="#i-bike"/></svg></a><a><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a class="on"><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><h1 class="t-title">Settings</h1></div>
+        <div class="content">
+          <div class="panel list" style="width:190px;flex:none;align-self:flex-start;font-size:13.5px">
+            <div class="lrow sel" style="min-height:40px;color:var(--accent)"><svg class="i sm"><use href="#i-sun"/></svg><span class="lt">Display &amp; units</span></div>
+            <div class="lrow" style="min-height:40px"><svg class="i sm faint"><use href="#i-bluetooth"/></svg><span class="lt">Connection</span></div>
+            <div class="lrow" style="min-height:40px"><svg class="i sm faint"><use href="#i-circle-dot"/></svg><span class="lt">Ride logging</span></div>
+            <div class="lrow" style="min-height:40px"><svg class="i sm faint"><use href="#i-database"/></svg><span class="lt">Storage</span></div>
+            <div class="lrow" style="min-height:40px"><svg class="i sm faint"><use href="#i-shield-check"/></svg><span class="lt">Run in background</span><span class="link-dot warn" style="box-shadow:none"></span></div>
+            <div class="lrow" style="min-height:40px"><svg class="i sm faint"><use href="#i-wrench"/></svg><span class="lt">Developer</span></div>
+          </div>
+          <div class="panel list" style="flex:1;align-self:flex-start">
+            <div class="lrow"><span class="lt">Speed and distance</span><span class="segc"><span class="on">km/h</span><span>mph</span></span></div>
+            <div class="lrow"><span class="lt">Temperature</span><span class="segc"><span class="on">°C</span><span>°F</span></span></div>
+            <div class="lrow"><span class="lt"><span>Theme</span><span class="sub">Sun is high contrast for daylight</span></span><span class="segc"><span class="on">Night</span><span>Sun</span><span>Auto</span></span></div>
+            <div class="lrow"><span class="lt"><span>Glass effects</span><span class="sub">Flat saves battery. Drops to Flat by itself when the phone is hot</span></span><span class="segc"><span>Full</span><span class="on">Static</span><span>Flat</span></span></div>
+            <div class="lrow"><span class="lt"><span>Keep screen on while connected</span></span><span class="switch on"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>Sections: Display &amp; units, Connection (auto-connect, known devices), Ride logging (default on/off, auto-stop), Storage, Run in background, Developer (data source: BLE / replay file / synthetic ride).</li>
+    <li>A warn dot on a section means something needs the rider's attention (here: battery optimisation is on).</li>
+    <li><b>Glass tiers</b> map to <code>tokens.json › glass.tiers</code>.</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Storage <code>#settings-storage</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="settings-storage" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a><svg class="i"><use href="#i-timer"/></svg></a><a><svg class="i"><use href="#i-history"/></svg></a><a><svg class="i"><use href="#i-bike"/></svg></a><a><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a class="on"><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><span class="icon-btn" style="width:40px;height:40px"><svg class="i"><use href="#i-chevron-left"/></svg></span><h1 class="t-title">Storage</h1></div>
+        <div class="content" style="flex-direction:column;gap:12px">
+          <div class="panel pad stack" style="gap:10px">
+            <div class="row-flex" style="align-items:baseline"><span class="num" style="font-size:40px">412</span><span class="muted">MB used of 2 GB limit</span><span class="spacer"></span><span class="faint" style="font-size:12px">About 70 more hours of riding</span></div>
+            <div style="display:flex;height:14px;border-radius:7px;overflow:hidden;background:color-mix(in srgb,var(--text-primary) 8%,transparent)"><i style="width:15.5%;background:var(--accent)"></i><i style="width:2%;background:var(--metric-drive)"></i><i style="width:2.6%;background:var(--text-tertiary)"></i></div>
+            <div class="row-flex" style="gap:18px;font-size:12.5px"><span class="row-flex" style="gap:6px"><i style="width:10px;height:10px;border-radius:3px;background:var(--accent)"></i>Rides · 318 MB</span><span class="row-flex" style="gap:6px"><i style="width:10px;height:10px;border-radius:3px;background:var(--metric-drive)"></i>Speed runs · 41 MB</span><span class="row-flex" style="gap:6px"><i style="width:10px;height:10px;border-radius:3px;background:var(--text-tertiary)"></i>Other · 53 MB</span></div>
+          </div>
+          <div class="panel list">
+            <div class="lrow"><span class="lt"><span>Storage limit</span><span class="sub">You get a warning at 90 %. Nothing is deleted without asking</span></span><span class="field" style="width:110px">2<span class="unit">GB</span></span></div>
+            <div class="lrow"><span class="lt"><span>Compress rides older than</span><span class="sub">Keeps 1 value per second plus the min and max, about 10× smaller</span></span><span class="field" style="width:110px">7<span class="unit">days</span></span><span class="btn sm">Compress now</span></div>
+            <div class="lrow"><span class="lt"><span>Delete old data</span><span class="sub">Choose rides by age or pick them in History</span></span><span class="btn sm danger"><svg class="i sm"><use href="#i-trash-2"/></svg>Delete…</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>Usage is broken down so the rider sees what takes space. The "hours left" estimate uses the measured bytes per hour.</li>
+    <li>Delete always asks for confirmation inside the app (a sheet with the count and size) and offers undo for 5 s.</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Run in background guide <code>#settings-background</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="settings-background" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a><svg class="i"><use href="#i-timer"/></svg></a><a><svg class="i"><use href="#i-history"/></svg></a><a><svg class="i"><use href="#i-bike"/></svg></a><a><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a class="on"><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><span class="icon-btn" style="width:40px;height:40px"><svg class="i"><use href="#i-chevron-left"/></svg></span><h1 class="t-title">Run in background</h1></div>
+        <div class="content">
+          <div class="col" style="flex:1">
+            <p class="muted" style="margin:0 0 4px;max-width:44ch">Android may stop the connection when the screen is off. These settings keep the ride recording.</p>
+            <div class="panel list">
+              <div class="lrow"><svg class="i c-ok"><use href="#i-check"/></svg><span class="lt"><span>Nearby devices</span><span class="sub">Allowed</span></span></div>
+              <div class="lrow"><svg class="i c-ok"><use href="#i-check"/></svg><span class="lt"><span>Notifications</span><span class="sub">Allowed · needed for the ride notification</span></span></div>
+              <div class="lrow"><svg class="i c-warn"><use href="#i-triangle-alert"/></svg><span class="lt"><span>Battery optimisation</span><span class="sub">On · Android may stop the app</span></span><span class="btn sm primary">Turn off</span></div>
+            </div>
+          </div>
+          <div class="col" style="width:300px;flex:none">
+            <div class="panel pad stack" style="gap:8px;font-size:13px">
+              <span class="t-label muted">Your phone maker</span>
+              <span>Some phones have an extra power saver. Also allow the app there:</span>
+              <span class="muted">Settings › Battery › Background usage limits › Never sleeping apps</span>
+              <span class="c-accent" style="font-weight:500">More phone makers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>Each row is a live check that re-runs when the rider returns from system settings.</li>
+    <li>The right panel shows vendor-specific steps picked from the phone's manufacturer (a data table, one entry per maker).</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>System notification <code>#system-notification</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="system-notification" data-theme="night">
+    <div class="shade" style="padding:20px 150px;display:flex;flex-direction:column;gap:10px">
+      <div class="row-flex" style="color:#A8AEB6;font-size:13px;padding:0 6px"><span>14:32</span><span class="spacer"></span><span>Tue, 29 Sep</span></div>
+      <div class="notif">
+        <div class="app"><span class="ai"><svg class="i sm" style="width:12px;height:12px"><use href="#i-gauge"/></svg></span>VESC Monitor · Riding · REC 12:41</div>
+        <div style="font-size:15px;font-weight:500">37 km/h · 72 % · 1.84 kW</div>
+        <div style="font-size:13px;color:#A8AEB6">VESC BLE connected · 18 Hz · 12.4 km</div>
+        <div class="acts"><span>Stop recording</span><span>Disconnect</span></div>
+      </div>
+      <div class="notif" style="border-left:4px solid var(--state-warn)">
+        <div class="app"><span class="ai" style="background:var(--state-warn)"><svg class="i sm" style="width:12px;height:12px"><use href="#i-thermometer"/></svg></span>VESC Monitor · Alert · now</div>
+        <div style="font-size:15px;font-weight:500">Motor getting hot · 87 °C</div>
+        <div style="font-size:13px;color:#A8AEB6">The controller limits power at 95 °C.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>Ongoing notification</b> of the foreground service: state, three key values, ride time. Updates at most once per second. Actions never touch the controller.</li>
+    <li><b>Alert notifications</b> use a separate channel so the rider can give them sound while the ongoing one stays silent.</li>
+    <li>"VESC Monitor" is a placeholder app name.</li>
+  </ul>
+</section>
+
+<script src="icons.js"></script>
+<script src="kit.js"></script>
+</body>
+</html>

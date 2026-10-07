@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alerts mockups</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="kit.css">
+</head>
+<body class="gallery">
+<header>
+  <h1>Alerts</h1>
+  <p>Every warning the connected hardware can support is switched on by default, with limits taken from the controller's own config. Alerts the hardware can't support are shown with the reason, so nothing is silently missing.</p>
+  <nav><a href="index.html">All screens</a><a href="dashboard.html">Dashboard</a><a href="dashboard-edit.html">Edit layout</a><a href="connect.html">Connect</a><a href="vehicle.html">Vehicle</a><a href="speed-test.html">Speed test</a><a href="history.html">History</a><a href="alerts.html">Alerts</a><a href="settings.html">Settings</a></nav>
+</header>
+
+<section class="spec">
+  <h2>Alert list <code>#alerts-list</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="alerts-list" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a><svg class="i"><use href="#i-timer"/></svg></a><a><svg class="i"><use href="#i-history"/></svg></a><a><svg class="i"><use href="#i-bike"/></svg></a><a class="on"><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><h1 class="t-title">Alerts</h1><span class="faint" style="font-size:12px;margin-left:6px">18 on · 3 unavailable</span><span class="spacer"></span><span class="btn sm"><svg class="i sm"><use href="#i-volume-2"/></svg>Test sound</span></div>
+        <div class="content">
+          <div class="panel list" style="width:170px;flex:none;align-self:flex-start;font-size:13.5px">
+            <div class="lrow sel" style="min-height:40px;color:var(--accent)"><span class="lt">Temperature</span><span class="tnum">4</span></div>
+            <div class="lrow" style="min-height:40px"><span class="lt">Battery</span><span class="tnum faint">5</span></div>
+            <div class="lrow" style="min-height:40px"><span class="lt">Power</span><span class="tnum faint">2</span></div>
+            <div class="lrow" style="min-height:40px"><span class="lt">Faults</span><span class="tnum faint">all</span></div>
+            <div class="lrow" style="min-height:40px"><span class="lt">Connection</span><span class="tnum faint">3</span></div>
+            <div class="lrow" style="min-height:40px"><span class="lt">GPS &amp; speed</span><span class="tnum faint">3</span></div>
+          </div>
+          <div class="panel list" style="flex:1;align-self:flex-start">
+            <div class="lrow"><span class="lt"><span>Motor getting hot</span><span class="sub">at 85 °C · 10 °C before the controller's limit</span></span><span class="chip warn" style="height:22px">Warning</span><span class="row-flex faint" style="gap:4px"><svg class="i sm"><use href="#i-volume-2"/></svg><svg class="i sm"><use href="#i-vibrate"/></svg></span><span class="switch on"></span></div>
+            <div class="lrow"><span class="lt"><span>Motor power limited</span><span class="sub">at 95 °C · from controller config</span></span><span class="chip crit" style="height:22px">Critical</span><span class="row-flex faint" style="gap:4px"><svg class="i sm"><use href="#i-volume-2"/></svg><svg class="i sm"><use href="#i-vibrate"/></svg></span><span class="switch on"></span></div>
+            <div class="lrow"><span class="lt"><span>Controller getting hot</span><span class="sub">FET at 70 °C</span></span><span class="chip warn" style="height:22px">Warning</span><span class="row-flex faint" style="gap:4px"><svg class="i sm"><use href="#i-vibrate"/></svg></span><span class="switch on"></span></div>
+            <div class="lrow"><span class="lt"><span>Temperature rising fast</span><span class="sub">more than 10 °C per minute</span></span><span class="chip" style="height:22px">Info</span><span class="row-flex faint" style="gap:4px"></span><span class="switch"></span></div>
+            <div class="lrow dis"><span class="lt"><span>Front motor temperature</span><span class="sub">No temperature sensor on this motor</span></span><span class="chip dim" style="height:22px">Unavailable</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>Grouped by what the rider cares about, not by data source. Each row: plain-language name, the trigger, severity chip, output icons, switch.</li>
+    <li>Thresholds derived from the controller config say so ("from controller config") and follow it when it changes, unless the rider overrides them.</li>
+    <li><b>Unavailable</b> rows stay visible with the reason. They become available automatically when the sensor appears.</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Edit one alert <code>#alert-edit</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="alert-edit" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a><svg class="i"><use href="#i-timer"/></svg></a><a><svg class="i"><use href="#i-history"/></svg></a><a><svg class="i"><use href="#i-bike"/></svg></a><a class="on"><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main"><div class="topbar"><h1 class="t-title">Alerts</h1></div></div>
+    </div>
+    <div class="scrim"></div>
+    <div class="sheet wide">
+      <div class="sheet-head"><span class="stack" style="gap:0"><span class="t-heading">Motor getting hot</span><span class="faint" style="font-size:12px">Temperature · applies to the hottest motor</span></span><span class="spacer"></span><span class="switch on"></span></div>
+      <div class="sheet-body" style="gap:12px">
+        <div class="stack" style="gap:4px">
+          <div class="row-flex"><span class="muted" style="font-size:13px">Warn at</span><span class="spacer"></span><span class="num" style="font-size:28px">85</span><span class="faint">°C</span></div>
+          <div class="slider"><i style="width:70%"></i><b style="left:70%"></b><span style="position:absolute;left:83%;top:4px;width:2px;height:20px;background:var(--state-crit);border-radius:1px"></span></div>
+          <div class="scale"><span>40 °C</span><span class="c-crit" style="margin-left:auto;margin-right:12%">limit 95</span><span>110 °C</span></div>
+        </div>
+        <div class="row-flex" style="gap:12px">
+          <div class="stack" style="flex:1;gap:4px"><span class="muted" style="font-size:12px">Clears below</span><span class="field">82<span class="unit">°C</span></span></div>
+          <div class="stack" style="flex:1;gap:4px"><span class="muted" style="font-size:12px">Repeat after</span><span class="field">60<span class="unit">s</span></span></div>
+          <div class="stack" style="flex:1.4;gap:4px"><span class="muted" style="font-size:12px">Severity</span><span class="segc"><span>Info</span><span class="on">Warning</span><span>Critical</span></span></div>
+        </div>
+        <div class="stack" style="gap:6px"><span class="muted" style="font-size:12px">When it fires</span>
+          <div class="row-flex" style="gap:6px"><span class="chip on"><svg class="i sm"><use href="#i-volume-2"/></svg>Sound</span><span class="chip on"><svg class="i sm"><use href="#i-vibrate"/></svg>Vibrate</span><span class="chip on"><svg class="i sm"><use href="#i-smartphone"/></svg>Banner</span><span class="chip"><svg class="i sm"><use href="#i-bell"/></svg>Notification</span></div></div>
+      </div>
+      <div class="sheet-foot"><span class="btn ghost" style="margin-right:auto">Reset to default</span><span class="btn primary">Save</span></div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>The slider shows the controller's own limit as a red tick, so the rider sees how much margin the warning leaves.</li>
+    <li><b>Clears below</b> is the hysteresis; <b>Repeat after</b> is the cooldown. Both have sensible defaults and most riders never touch them.</li>
+    <li>Notification is for when the app is in the background. The banner is always used in the foreground.</li>
+  </ul>
+</section>
+
+<script src="icons.js"></script>
+<script src="kit.js"></script>
+</body>
+</html>

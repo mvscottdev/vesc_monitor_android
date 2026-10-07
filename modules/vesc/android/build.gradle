@@ -1,0 +1,38 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+  // Room's annotation processor. kapt ships with the Kotlin Gradle plugin the app
+  // already uses; KSP would need its own plugin on the root build classpath.
+  id 'org.jetbrains.kotlin.kapt'
+}
+
+group = 'dev.vescmonitor'
+version = '0.1.0'
+
+android {
+  namespace "dev.vescmonitor.vesc"
+  defaultConfig {
+    versionCode 1
+    versionName "0.1.0"
+  }
+  sourceSets {
+    // The pure Kotlin core is compiled straight into this module.
+    main.java.srcDirs += "../../../core/src/main/kotlin"
+  }
+}
+
+dependencies {
+  implementation 'com.facebook.react:react-android'
+  implementation 'no.nordicsemi.android:ble:2.11.0'
+  implementation 'no.nordicsemi.android:ble-ktx:2.11.0'
+  implementation 'androidx.core:core-ktx:1.13.1'
+  implementation 'androidx.room:room-runtime:2.8.5'
+  kapt 'androidx.room:room-compiler:2.8.5'
+}
+
+kapt {
+  arguments {
+    // Checked-in schema history for migration tests.
+    arg('room.schemaLocation', "$projectDir/../schemas")
+  }
+}

@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <application>
+    <service
+      android:name=".VescService"
+      android:exported="false"
+      android:foregroundServiceType="connectedDevice"
+      android:stopWithTask="false" />
+    <receiver
+      android:name=".NotificationActions"
+      android:exported="false" />
+  </application>
+</manifest>

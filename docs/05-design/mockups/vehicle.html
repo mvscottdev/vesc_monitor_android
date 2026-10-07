@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vehicle mockups</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="kit.css">
+</head>
+<body class="gallery">
+<header>
+  <h1>Vehicle profile, battery, wheel calibration</h1>
+  <p>Everything the app needs to turn raw controller data into speed, charge and range. Values are read from the controller, detected, or typed by the rider. Each one says which. Nothing is ever written back to the controller.</p>
+  <nav><a href="index.html">All screens</a><a href="dashboard.html">Dashboard</a><a href="dashboard-edit.html">Edit layout</a><a href="connect.html">Connect</a><a href="vehicle.html">Vehicle</a><a href="speed-test.html">Speed test</a><a href="history.html">History</a><a href="alerts.html">Alerts</a><a href="settings.html">Settings</a></nav>
+</header>
+
+<section class="spec">
+  <h2>Profile <code>#vehicle-profile</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="vehicle-profile" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a><svg class="i"><use href="#i-timer"/></svg></a><a><svg class="i"><use href="#i-history"/></svg></a><a class="on"><svg class="i"><use href="#i-bike"/></svg></a><a><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><div class="stack" style="gap:0"><h1 class="t-title">Vehicle</h1><span class="faint" style="font-size:12px">VESC BLE · e-scooter · 2 controllers</span></div><span class="spacer"></span><span class="btn sm"><svg class="i sm"><use href="#i-ruler"/></svg>Calibrate wheel</span></div>
+        <div class="content">
+          <div class="col" style="flex:1.1">
+            <div class="panel pad stack" style="gap:10px">
+              <div class="row-flex"><span class="t-heading">Speed source</span><span class="spacer"></span><span class="faint" style="font-size:12px">Now using VESC</span></div>
+              <span class="segc"><span class="on">Auto</span><span>VESC</span><span>ERPM</span><span>GPS</span><span>Wheel sensor</span></span>
+              <div class="row-flex"><span class="muted" style="font-size:13px">Drive</span><span class="spacer"></span><span class="segc"><span class="on">Hub motor</span><span>Mid-drive</span></span></div>
+            </div>
+            <div class="panel">
+              <div class="row-flex panel-title"><span class="t-heading">Motor &amp; wheel</span><span class="spacer"></span><span class="segc" style="padding:2px"><span class="on" style="height:26px">Rear</span><span style="height:26px">Front</span></span></div>
+              <div class="list">
+                <div class="lrow" style="min-height:44px"><span class="lt">Motor poles</span><span class="num" style="font-size:18px">30</span><span class="prov vesc">VESC</span></div>
+                <div class="lrow" style="min-height:44px"><span class="lt">Gear ratio</span><span class="num" style="font-size:18px">1.00</span><span class="prov vesc">VESC</span></div>
+                <div class="lrow" style="min-height:44px"><span class="lt"><span>Wheel diameter</span><span class="sub">Controller says 250 mm · <span class="c-accent">Reset</span></span></span><span class="num" style="font-size:18px">248 <small class="faint" style="font:500 12px var(--font-ui)">mm</small></span><span class="prov user">You</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col" style="flex:1">
+            <div class="panel">
+              <div class="row-flex panel-title"><span class="t-heading">Battery</span><span class="spacer"></span><span class="chip ok" style="height:22px">Detected · high confidence</span></div>
+              <div class="list">
+                <div class="lrow" style="min-height:44px"><span class="lt">Cells in series</span><span class="num" style="font-size:18px">16S</span><span class="prov auto">Detected</span></div>
+                <div class="lrow" style="min-height:44px"><span class="lt">Chemistry</span><span style="font-weight:500">Li-ion NMC</span><span class="prov auto">Detected</span></div>
+                <div class="lrow" style="min-height:44px"><span class="lt">Capacity</span><span class="num" style="font-size:18px">25 <small class="faint" style="font:500 12px var(--font-ui)">Ah</small></span><span class="prov vesc">VESC</span></div>
+                <div class="lrow" style="min-height:44px"><span class="lt">Empty at</span><span class="num" style="font-size:18px">48.0 <small class="faint" style="font:500 12px var(--font-ui)">V</small></span><span class="prov vesc">VESC</span></div>
+                <div class="lrow" style="min-height:44px"><span class="lt">Full at</span><span class="num" style="font-size:18px">67.2 <small class="faint" style="font:500 12px var(--font-ui)">V</small></span><span class="prov def">Default</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li><b>ProvenanceBadge</b> on every value: <b>You</b> (override) &gt; <b>VESC</b> (read from the controller config) &gt; <b>Detected</b> &gt; <b>Default</b>. Tapping a row edits it. An override shows the controller's value underneath with Reset.</li>
+    <li><b>Per controller:</b> motor and wheel values have a Rear/Front switch because controllers can differ. Battery is shared.</li>
+    <li><b>Speed source:</b> "Auto" says what it resolved to. On Mid-drive the app suggests GPS or a wheel sensor.</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Battery detection result <code>#vehicle-battery</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="vehicle-battery" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a><svg class="i"><use href="#i-timer"/></svg></a><a><svg class="i"><use href="#i-history"/></svg></a><a class="on"><svg class="i"><use href="#i-bike"/></svg></a><a><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><span class="icon-btn" style="width:40px;height:40px"><svg class="i"><use href="#i-chevron-left"/></svg></span><h1 class="t-title">Battery detection</h1></div>
+        <div class="content">
+          <div class="col" style="flex:1.25">
+            <div class="panel pad stack" style="gap:12px">
+              <div class="row-flex" style="align-items:flex-end;gap:14px">
+                <span class="num" style="font-size:56px">16S</span>
+                <div class="stack" style="gap:2px;padding-bottom:6px"><span class="t-heading">Li-ion NMC</span><span class="faint" style="font-size:12px">best match of 4 candidates</span></div>
+                <span class="spacer"></span>
+                <div class="stack" style="gap:4px;width:130px;padding-bottom:8px"><div class="row-flex" style="justify-content:space-between;font-size:12px"><span class="muted">Confidence</span><b class="c-ok">High</b></div><div class="bar"><i style="width:86%;--c:var(--state-ok)"></i></div></div>
+              </div>
+              <div class="stack" style="gap:7px;font-size:13px">
+                <div class="row-flex"><svg class="i sm c-ok"><use href="#i-check"/></svg><span>Controller config says 16 cells, Li-ion</span></div>
+                <div class="row-flex"><svg class="i sm c-ok"><use href="#i-check"/></svg><span>62.4 V at rest is 3.90 V per cell, normal for NMC</span></div>
+                <div class="row-flex"><svg class="i sm c-ok"><use href="#i-check"/></svg><span>Cutoff 48.0 V is 3.00 V per cell, a typical empty point</span></div>
+                <div class="row-flex"><svg class="i sm c-info"><use href="#i-info"/></svg><span class="muted">Charge to full once to confirm (expect about 67.2 V)</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col" style="flex:1">
+            <span class="t-label muted" style="padding-top:4px">Other possibilities</span>
+            <div class="panel list">
+              <div class="lrow"><span class="lt"><span>20S LiFePO₄</span><span class="sub">3.12 V per cell · config disagrees</span></span><span class="chip dim">Unlikely</span></div>
+              <div class="lrow"><span class="lt"><span>17S Li-ion NMC</span><span class="sub">3.67 V per cell · uncommon size</span></span><span class="chip dim">Unlikely</span></div>
+            </div>
+            <span class="spacer"></span>
+            <div class="row-flex" style="justify-content:flex-end"><span class="btn ghost">Enter by hand</span><span class="btn primary"><svg class="i"><use href="#i-check"/></svg>Use 16S NMC</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>Shows the <b>guess, the confidence and the evidence</b>, so a rider who doesn't know the pack can still say yes with confidence.</li>
+    <li>Each evidence line is a check (supports), info (not yet known) or warn (contradicts).</li>
+    <li>Low confidence turns the chip warn and makes "Enter by hand" the primary button.</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Wheel calibration, collecting <code>#vehicle-calibrate</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="vehicle-calibrate" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a><svg class="i"><use href="#i-timer"/></svg></a><a><svg class="i"><use href="#i-history"/></svg></a><a class="on"><svg class="i"><use href="#i-bike"/></svg></a><a><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><h1 class="t-title">Wheel calibration</h1><span class="chip ok" style="height:24px"><svg class="i sm"><use href="#i-satellite"/></svg>GPS good · 3.1 m</span><span class="spacer"></span><span class="btn sm danger"><svg class="i sm"><use href="#i-square"/></svg>Stop</span></div>
+        <div class="content">
+          <div class="col" style="flex:1.2;gap:12px">
+            <div class="panel pad stack" style="gap:10px">
+              <div class="row-flex" style="align-items:baseline"><span class="num" style="font-size:56px">0.62</span><span class="muted">/ 1.00 km of good data</span><span class="spacer"></span><span class="chip ok">Collecting</span></div>
+              <div class="bar thick"><i style="width:62%;--c:var(--accent)"></i></div>
+              <div class="row-flex muted" style="font-size:13px;gap:18px"><span>GPS ÷ wheel <b class="num" style="font-size:18px;color:var(--text-primary)">0.976</b></span><span>Segments <b class="num" style="font-size:18px;color:var(--text-primary)">23</b></span><span>Spread <b class="num" style="font-size:18px;color:var(--text-primary)">±0.5%</b></span></div>
+            </div>
+            <p class="muted" style="margin:0;font-size:13px">Ride straight at a steady speed above 15 km/h. Collection pauses by itself while you speed up, brake or turn.</p>
+          </div>
+          <div class="col" style="flex:1">
+            <span class="t-label muted" style="padding-top:4px">Conditions</span>
+            <div class="panel list" style="font-size:13.5px">
+              <div class="lrow" style="min-height:40px"><svg class="i sm c-ok"><use href="#i-check"/></svg><span class="lt">Position accuracy</span><span class="tnum">3.1 m</span></div>
+              <div class="lrow" style="min-height:40px"><svg class="i sm c-ok"><use href="#i-check"/></svg><span class="lt">Speed accuracy</span><span class="tnum">0.3 m/s</span></div>
+              <div class="lrow" style="min-height:40px"><svg class="i sm c-ok"><use href="#i-check"/></svg><span class="lt">Speed</span><span class="tnum">27 km/h</span></div>
+              <div class="lrow" style="min-height:40px"><svg class="i sm c-ok"><use href="#i-check"/></svg><span class="lt">Heading steady</span><span class="tnum">±3°</span></div>
+              <div class="lrow" style="min-height:40px"><svg class="i sm c-warn"><use href="#i-triangle-alert"/></svg><span class="lt">Steady speed</span><span class="c-warn" style="font-size:12.5px">Hold it</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>Each condition is a live check. Any failing check pauses collection and the "Collecting" chip turns to "Paused · why".</li>
+    <li>The thresholds shown (5 m, 0.5 m/s, 15 km/h) are defaults from the vehicle-profile spec and are still being researched.</li>
+    <li>GPS runs only during calibration, speed tests and rides where the rider turns it on.</li>
+  </ul>
+</section>
+
+<section class="spec">
+  <h2>Wheel calibration, result <code>#vehicle-calibrate-result</code></h2>
+  <div class="frame-wrap">
+  <div class="frame" id="vehicle-calibrate-result" data-theme="night">
+    <div class="screen">
+      <nav class="rail"><a><svg class="i"><use href="#i-gauge"/></svg></a><a><svg class="i"><use href="#i-timer"/></svg></a><a><svg class="i"><use href="#i-history"/></svg></a><a class="on"><svg class="i"><use href="#i-bike"/></svg></a><a><svg class="i"><use href="#i-bell"/></svg></a><span class="rail-sep"></span><a><svg class="i"><use href="#i-settings"/></svg></a></nav>
+      <div class="main">
+        <div class="topbar"><h1 class="t-title">Wheel calibration</h1><span class="chip ok" style="height:24px">Done · high confidence</span></div>
+        <div class="content">
+          <div class="col" style="flex:1.1;gap:12px">
+            <div class="panel pad stack" style="gap:6px">
+              <span class="t-label muted">Suggested wheel diameter</span>
+              <div class="row-flex" style="align-items:baseline;gap:14px">
+                <span class="num faint" style="font-size:34px;text-decoration:line-through;text-decoration-thickness:2px">254</span>
+                <svg class="i faint"><use href="#i-chevron-right"/></svg>
+                <span class="num" style="font-size:72px">248</span><span class="muted">mm</span>
+                <span class="chip" style="margin-left:auto">−2.4 %</span>
+              </div>
+              <span class="faint" style="font-size:12px">From 1.3 km of good GPS in 41 segments · spread ±0.4 %</span>
+            </div>
+            <div class="row-flex"><span class="btn"><svg class="i"><use href="#i-check"/></svg>Use in this app</span><span class="btn ghost">Discard</span></div>
+          </div>
+          <div class="col" style="flex:1">
+            <span class="t-label muted" style="padding-top:4px">Set it on the controller</span>
+            <div class="panel pad stack" style="gap:8px;font-size:13.5px">
+              <div class="row-flex" style="align-items:flex-start"><span class="chip" style="width:24px;height:24px;padding:0;justify-content:center">1</span><span>Open VESC Tool and connect.</span></div>
+              <div class="row-flex" style="align-items:flex-start"><span class="chip" style="width:24px;height:24px;padding:0;justify-content:center">2</span><span>Motor Settings › Additional Info › Setup</span></div>
+              <div class="row-flex" style="align-items:flex-start"><span class="chip" style="width:24px;height:24px;padding:0;justify-content:center">3</span><span>Set Wheel Diameter to <b>248 mm</b>, then write the motor config.</span></div>
+            </div>
+            <p class="faint" style="margin:0;font-size:12px">This app only reads from the controller. It never changes its settings.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <ul class="annot">
+    <li>The <b>primary result</b> is the value to type into VESC Tool. "Use in this app" stores it as an in-app override (badge "You").</li>
+    <li>The VESC Tool menu path is (UNVERIFIED). Check it against the current VESC Tool before shipping the copy.</li>
+    <li>Low confidence (little data or wide spread) shows a warn chip and "Ride more to improve".</li>
+  </ul>
+</section>
+
+<script src="icons.js"></script>
+<script src="kit.js"></script>
+</body>
+</html>
