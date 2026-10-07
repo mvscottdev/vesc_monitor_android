@@ -7,7 +7,7 @@
 - Node 24 + npm. No Bun.
 - Dev builds arm64-only to save time and disk.
 - APKs come from GitHub Actions (signed release build): download the artifact from the workflow run and install it on the phone. Local builds are optional: `npx expo run:android` (dev client), `cd android && ./gradlew assembleRelease` (release). No EAS.
-- Releases: push a `v*` tag (matching `version` in `app.config.ts`) and the workflow attaches the APK to a GitHub Release.
+- Releases: push a `v*` tag (matching `version` in `app.config.ts`), or run the `android` workflow by hand with that tag as `release`; the workflow attaches the APK to a GitHub Release.
 
 ## Commands
 | Task | Command |
