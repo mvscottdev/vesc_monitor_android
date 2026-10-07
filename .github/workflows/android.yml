@@ -2,6 +2,9 @@ name: android
 
 on:
   push:
+    branches: ['**']
+    # A v* tag (e.g. v0.1.0) builds the APK and publishes it as a GitHub Release.
+    tags: ['v*']
     paths-ignore:
       - 'docs/**'
   workflow_dispatch:
@@ -86,3 +89,27 @@ jobs:
           path: modules/vesc/schemas/**/*.json
           if-no-files-found: warn
           retention-days: 30
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: apk
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: vesc-monitor-*
+          merge-multiple: true
+          path: dist
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SIGNED: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+        run: |
+          apk="vesc-monitor-${GITHUB_REF_NAME}.apk"
+          mv dist/*.apk "dist/$apk"
+          if [ "$SIGNED" = true ]; then key="the project's release key"; else key="the shared debug key (uninstall builds signed with another key first)"; fi
+          printf 'Android APK (arm64-v8a), signed with %s.\n\nRead-only VESC monitor: it never writes configuration or commands to the controller.\n' "$key" > notes.md
+          gh release create "$GITHUB_REF_NAME" "dist/$apk" --repo "$GITHUB_REPOSITORY" --title "$GITHUB_REF_NAME" --notes-file notes.md --generate-notes
